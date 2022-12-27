@@ -1,0 +1,32 @@
+query QueryPlanets {
+  planets {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+  }
+}
+
+mutation CreatePlanet($data: CreatePlanetInput!) {
+  planet(data: $data) {
+    id
+    name
+  }
+}
+
+mutation UpdatePlanet($id: String!, $data: UpdatePlanetInput!) {
+  updatePlanet(id: $id, data: $data) {
+    id
+    name
+  }
+}
+
+mutation RemovePlanet($id: String!) {
+  removePlanet(id: $id) {
+    id
+    name
+    description
+    updatedAt
+  }
+}

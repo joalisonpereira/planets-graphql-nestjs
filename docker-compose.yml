@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  # api:
+  #   build: .
+  #   restart: always
+  #   ports:
+  #     - 3000:3000
+  #   networks:
+  #     - planets-network
+  #   depends_on:
+  #     - db
+
+  db:
+    image: mysql:8.0.31
+    ports:
+      - 3306:3306
+    restart: always
+    networks:
+      - planets-network
+    environment:
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=planets
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+networks:
+  planets-network:
+    driver: bridge
